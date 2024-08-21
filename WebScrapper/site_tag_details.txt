@@ -1,0 +1,27 @@
+ecommsites{
+
+    name: String
+    homepage : String url
+    logo : Image or path to image, String
+    niche : {
+        for eg : electronics, clothes, accesories, footwear, sports wear etc
+    }
+    tags{
+        searching:{
+            searchbutton:
+            searchbar:
+            searchenter:
+        },
+        product:{
+            name:
+            description:
+            link:
+            imageslink:
+            price:
+            size:
+            ratings:
+            offers:
+        }
+    }
+
+}
