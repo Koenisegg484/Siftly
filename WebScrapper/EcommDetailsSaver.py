@@ -34,50 +34,50 @@ def addproduct(storename):
     offers = {}
     
     # Adding title
-    title['tag'] = input("Enter tag for product name/title : ")
-    title['classname'] = input("Enter class name for product : ")
+    title['tag'] = input("Enter tag for product name/title : ") or "NA"
+    title['classname'] = input("Enter class name for product : ") or "NA"
     title['idname'] = input("Enter id for product : ") or None
     title['fullXPath'] = input("Enter full X path for product : ")
 
     
-    description['tag'] = input("Enter tag for product description : ")
-    description['classname'] = input("Enter class name for product description : ")
+    description['tag'] = input("Enter tag for product description : ") or "NA"
+    description['classname'] = input("Enter class name for product description : ") or "NA"
     description['idname'] = input("Enter id for product description : ") or None
     description['fullXPath'] = input("Enter full X path for product description : ")
 
     
-    link['tag'] = input("Enter tag for the product link(the url) : ")
-    link['classname'] = input("Enter class for the product link(the url) : ")
+    link['tag'] = input("Enter tag for the product link(the url) : ")  or "NA"
+    link['classname'] = input("Enter class for the product link(the url) : ") or "NA"
     link['idname'] = input("Enter id for the product link(the url) : ") or None
     link['fullXPath'] = input("Enter full X path for the product link(the url) : ")
 
 
-    imageslink['tag'] = input("Enter tag for image section tag : ")
-    imageslink['classname'] = input("Enter class for image section tag : ")
+    imageslink['tag'] = input("Enter tag for image section tag : ") or "NA"
+    imageslink['classname'] = input("Enter class for image section tag : ") or "NA"
     imageslink['idname'] = input("Enter id for image section tag : ") or None
     imageslink['fullXPath'] = input("Enter full X path for image section tag : ")
 
 
-    price['tag'] = input("Enter tag for price : ")
-    price['classname'] = input("Enter class for price : ")
+    price['tag'] = input("Enter tag for price : ") or "NA"
+    price['classname'] = input("Enter class for price : ") or "NA"
     price['idname'] = input("Enter id for price : ") or None
     price['fullXPath'] = input("Enter full X path for price : ")
 
 
-    size['tag'] = input("Enter tag for size : ")
-    size['classname'] = input("Enter class for size : ")
+    size['tag'] = input("Enter tag for size : ") or "NA"
+    size['classname'] = input("Enter class for size : ") or "NA"
     size['idname'] = input("Enter id for size : ") or None
     size['fullXPath'] = input("Enter full X path for size : ")
 
 
-    ratings['tag'] = input("Enter tag for ratings : ")
-    ratings['classname'] = input("Enter class for ratings : ")
+    ratings['tag'] = input("Enter tag for ratings : ") or "NA"
+    ratings['classname'] = input("Enter class for ratings : ") or "NA"
     ratings['idname'] = input("Enter id for ratings : ") or None
     ratings['fullXPath'] = input("Enter full X path for ratings : ")
 
 
-    offers['tag'] = input("Enter tag for offers :")
-    offers['classname'] = input("Enter class for offers :")
+    offers['tag'] = input("Enter tag for offers :") or "NA"
+    offers['classname'] = input("Enter class for offers :") or "NA"
     offers['idname'] = input("Enter id for offers :") or None
     offers['fullXPath'] = input("Enter full X path for offers :")
 
