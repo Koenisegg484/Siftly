@@ -1,0 +1,6 @@
+/.idea
+
+*.pyc
+
+WebScrapper/__pycache__
+
