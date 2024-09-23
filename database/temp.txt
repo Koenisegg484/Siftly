@@ -1,0 +1,121 @@
+{
+  "_id": {
+    "$oid": "66efbca6efb727e0a1fe0463"
+  },
+  "name": "Amazon",
+  "homepage": "https://www.amazon.in/",
+  "logo": "https://freelogopng.com/images/all_img/1688361055amazon-logo-png.png",
+  "niche": [
+    "everything",
+    "phone",
+    "laptop",
+    "shirts",
+    "tshirts",
+    "electronics",
+    "shoes",
+    "sneakers",
+    "watches",
+    "accessories"
+  ],
+  "offers": [
+    "Free Shipping above 500"
+  ],
+  "searching_page_tags": {
+    "searchbar": [
+      {
+        "tag": "input",
+        "class": "nav-input.nav-progressive-attribute",
+        "xpath": "//*[@id=\"twotabsearchtextbox\"]"
+      }
+    ],
+    "productgrid": [
+      {
+        "tag": "div",
+        "xpath": "//*[@id=\"search\"]/div[1]/div[1]/div/span[1]/div[1]"
+      }
+    ],
+    "productlist": [
+      {
+        "tag": "div",
+        "id": "NA",
+        "class": "sg-col-20-of-24.s-result-item.s-asin.sg-col-0-of-12.sg-col-16-of-20.sg-col.s-widget-spacing-small.sg-col-12-of-16"
+      }
+    ],
+    "productname": [
+      {
+        "tag": "span",
+        "id": "NA",
+        "class": "a-size-medium.a-color-base.a-text-normal"
+      }
+    ],
+    "productimage": [
+      {
+        "tag": "img",
+        "id": "NA",
+        "class": "s-image"
+      }
+    ],
+    "producturl": [
+      {
+        "tag": "a",
+        "id": "NA",
+        "class": "a-link-normal.s-no-outline"
+      }
+    ],
+    "productprice": {
+      "tag": "span",
+      "id": "NA",
+      "class": "a-price-whole"
+    },
+    "productratings": {
+      "tag": "span",
+      "id": "NA",
+      "class": "a-icon-alt"
+    },
+    "product_no_of_ratings": {
+      "tag": "span",
+      "id": "NA",
+      "class": "a-size-base.s-underline-text"
+    },
+  },
+  "products_page_tags": {
+    "product_name": [
+      {
+        "tag": "span",
+        "class": "a-size-large.product-title-word-break",
+        "xpath": "//*[@id=\"productTitle\"]"
+      }
+    ],
+    "product_image": [
+      {
+        "tag": "img",
+        "class": "a-dynamic-image.a-stretch-vertical",
+        "xpath": "//*[@id=\"landingImage\"]"
+      }
+    ],
+    "product_price": [
+      {
+        "tag": [
+          "span",
+          "span"
+        ],
+        "class": [
+          "a-size-medium.a-color-success",
+          "a-price-whole"
+        ],
+        "xpath": [
+          "//*[@id=\"availability\"]/span[2]/span",
+          "//*[@id=\"corePriceDisplay_desktop_feature_div\"]/div[1]/span[3]/span[2]/span[2]"
+        ]
+      }
+    ],
+    "product_description": [
+      {}
+    ],
+    "product_ratings": {
+      "tag": "span",
+      "class": "a-size-base.a-color-base",
+      "xpath": "//*[@id=\"acrPopover\"]/span[1]/a/span"
+    }
+  }
+}
