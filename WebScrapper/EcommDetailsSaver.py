@@ -26,15 +26,6 @@ ecommstores = get_db()
 # for the elements needed for scrapping
 def addSearchPageDetails():
 
-    # These are for saving the elements of searching page
-    search_bar = {}
-    product_grid = {}
-    product_list = {}
-    product_name = {}
-    product_image = {}
-    product_url = {}
-    product_price = {}
-
     # The hierarchy goes as following:
     # searchbar
     # productgrid
@@ -46,46 +37,77 @@ def addSearchPageDetails():
     #       image link
     #       product link
     #       price
-    
+
+    # These are for saving the elements of searching page
+
     # This is for getting the search bar to search products
-    search_bar['tag'] = input("Enter tag for search bar : ")
-    search_bar['class'] = input("Enter class name for search bar : ")
-    search_bar['xpath'] = input("Enter full X path for search bar: ")
-    
+    search_bar = {
+        'tag' : input("Enter tag for search bar : "),
+        'class' : input("Enter class name for search bar : "),
+        'xpath' : input("Enter full X path for search bar: "),
+    }
+
     # This shall contain the list of products
     # Which will be iterated to get the below details
-    product_grid['tag'] = input("Enter tag for product grid : ")
-    product_grid['xpath'] = input("Enter full X path for product grid: ")
-    
+    product_grid = {
+        'tag' : input("Enter tag for product grid : "),
+        'xpath' : input("Enter full X path for product grid: "),
+    }
+
     # This contains the details of product
-    product_list['tag'] = input("Enter tag for product list  : ")
-    product_list['id'] = input("Enter id for product list :") or "NA"
-    product_list['class'] = input("Enter class for product list :")
-    
+    product_list = {
+        'tag' : input("Enter tag for product list  : "),
+        'id' : input("Enter id for product list :") or "NA",
+        'class' : input("Enter class for product list :"),
+    }
+
     # This is for the name of the product
-    product_name['tag'] = input("Enter tag for product name : ")
-    product_name['id'] = input("Enter id for product name : ") or "NA"
-    product_name['class'] = input("Enter class for product name : ")
-    # product_name['xpath'] = input("Enter full X path for product name: ")
-    
+    product_name = {
+        'tag' : input("Enter tag for product name : "),
+        'id' : input("Enter id for product name : ") or "NA",
+        'class' : input("Enter class for product name : "),
+    }
+
     # This is for the product image
-    product_image['tag'] = input("Enter tag for product image : ")
-    product_image['id'] = input("Enter id for product image : ") or "NA"
-    product_image['class'] = input("Enter class for product image : ")
-    # product_image['xpath'] = input("Enter full X path for product image : ")
-    
-    # This is for the product url to 
+    product_image = {
+        'tag' : input("Enter tag for product image : "),
+        'id' : input("Enter id for product image : ") or "NA",
+        'class' : input("Enter class for product image : "),
+    }
+
+    # This is for the product url to
     # redirect them to the main website page
-    product_url['tag'] = input("Enter tag for product url : ")
-    product_url['id'] = input("Enter id for product url : ")
-    product_url['class'] = input("Enter class for product url : ")
-    # product_url['xpath'] = input("Enter full X path for product url: ")
-    
+    product_url = {
+        'tag' : input("Enter tag for product url : "),
+        'id' : input("Enter id for product url : "),
+        'class' : input("Enter class for product url : "),
+    }
+
     # This for getting the price of the products
-    product_price['tag'] = input("Enter tag for product price : ")
-    product_price['id'] = input("Enter id for product price : ")
-    product_price['class'] = input("Enter class for product price : ")
-    # product_price['xpath'] = input("Enter full X path for search bar : ")
+    product_price = {
+        'tag' : input("Enter tag for product price : "),
+        'id' : input("Enter id for product price : "),
+        'class' : input("Enter class for product price : "),
+    }
+
+    # This for getting the price of the products
+    product_no_of_ratings = {
+        'tag' : input("Enter tag for product price : "),
+        'id' : input("Enter id for product price : "),
+        'class' : input("Enter class for product price : "),
+    }
+
+    # This for getting the price of the products
+    product_ratings = {
+        'tag' : input("Enter tag for product price : "),
+        'id' : input("Enter id for product price : "),
+        'class' : input("Enter class for product price : "),
+    }
+
+    # This for getting the price of the products
+    nextPageButton = {
+        'class' : input("Enter class for product price : "),
+    }
     
     return SearchingPageTags(
         searchbar = search_bar,
@@ -94,49 +116,59 @@ def addSearchPageDetails():
         productname = product_name,
         productimage = product_image,
         producturl = product_url,
-        productprice = product_price
+        productprice = product_price,
+        product_no_of_ratings = product_no_of_ratings,
+        productratings = product_ratings,
+        nextpagebutton = nextPageButton
     ).convert_to_dict()
     
 
 def addProductPageDetails():
-    # These are for saving the elements of main product page
-    product_name = {}
-    product_image = {}
-    product_price = {}
-    product_description = {}
-    product_ratings = {}
 
     print("Now, the below are the identifiers for the main products page .")
     print("-" * 25)
 
-#   This is for getting the product_name
-    product_name['tag'] = input("Enter tag for product_name : ")
-    product_name['class'] = input("Enter class name for product_name : ")
-    product_name['xpath'] = input("Enter x path for product_name : ")
+    # These are for saving the elements of main product page
+    product_name = {
+        #   This is for getting the product_name
+        'tag' : input("Enter tag for product_name : "),
+        'class' : input("Enter class name for product_name : "),
+        'xpath' : input("Enter x path for product_name : "),
 
+    }
 
-#   This is for getting the product_image
-    product_image['tag'] = input("Enter tag for product_image : ")
-    product_image['class'] = input("Enter class name for product_image : ")
-    product_image['xpath'] = input("Enter x path for product_image : ")
+    product_image = {
+        #   This is for getting the product_image
+        'tag' : input("Enter tag for product_image : "),
+        'class' : input("Enter class name for product_image : "),
+        'xpath' : input("Enter x path for product_image : "),
 
+    }
 
-#   This is for getting the product_price
-    product_price['tag'] = returns_list("Product Price tag : ")
-    product_price['class'] = returns_list("Product Price class name : ")
-    product_price['xpath'] = returns_list("Product Price xpath : ")
+    product_price = {
+        #   This is for getting the product_price
+        'tag' : returns_list("Product Price tag : "),
+        'class' : returns_list("Product Price class name : "),
+        'xpath' : returns_list("Product Price xpath : "),
 
+    }
 
-# #   This is for getting the product_description
-#     product_description['tag'] = input("Enter tag for product_description : ")
-#     product_description['class'] = input("Enter class name for product_description : ")
-#     product_description['xpath'] = input("Enter x path for product_description : ")
+    product_description = {
+        # #   This is for getting the product_description
+        #     product_description['tag'] = input("Enter tag for product_description : ")
+        #     product_description['class'] = input("Enter class name for product_description : ")
+        #     product_description['xpath'] = input("Enter x path for product_description : ")
 
+    }
 
-#   This is for getting the product_ratings
-    product_ratings['tag'] = input("Enter tag for product_ratings : ")
-    product_ratings['class'] = input("Enter class name for product_ratings : ")
-    product_ratings['xpath'] = input("Enter xpath for product_ratings : ")
+    product_ratings = {
+        #   This is for getting the product_ratings
+        'tag' : input("Enter tag for product_ratings : "),
+        'class' : input("Enter class name for product_ratings : "),
+        'xpath' : input("Enter xpath for product_ratings : "),
+
+    }
+
 
     return ProductPageTags(
         product_name=product_name,
@@ -145,8 +177,6 @@ def addProductPageDetails():
         product_description=product_description,
         product_ratings=product_ratings,
     ).convert_to_dict()
-
-
 
 
 def addStore():

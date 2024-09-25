@@ -1,14 +1,17 @@
 # This is for the searching page
 class SearchingPageTags:
 
-    def __init__(self, searchbar, productgrid, productlist, productname, productimage, producturl, productprice):
+    def __init__(self, searchbar, productgrid, productlist, productname, productimage, producturl, productprice, product_no_of_ratings, productratings, nextpagebutton):
          self.searchbar = searchbar,
          self.productgrid = productgrid,
          self.productlist = productlist, 
          self.productname = productname, 
          self.productimage = productimage, 
          self.producturl = producturl, 
-         self.productprice = productprice
+         self.productprice = productprice,
+         self.product_no_of_ratings = product_no_of_ratings,
+         self.productratings = productratings,
+         self.nextpagebutton = nextpagebutton
     
     def convert_to_dict(self):
         search_page_dict = {
@@ -18,7 +21,10 @@ class SearchingPageTags:
             "productname" : self.productname,
             "productimage" : self.productimage,
             "producturl" : self.producturl,
-            "productprice" : self.productprice
+            "productprice" : self.productprice,
+            "product_no_of_ratings" : self.product_no_of_ratings,
+            "productratings" : self.productratings,
+            "nextpagebutton" : self.nextpagebutton
         }
 
         return search_page_dict

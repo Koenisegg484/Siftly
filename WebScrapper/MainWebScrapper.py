@@ -72,48 +72,62 @@ def main_web_scrapper():
         driver.get(url)
         sleep(3)
 
-        searchbar_tags = doc['searching_page_tags']['searchbar'][0]
+        searchbar_tags = doc['searching_page_tags']['searchbar']
         searchBar = driver.find_element(By.XPATH, searchbar_tags['xpath'])
+        nextpage_tags = doc['searching_page_tags']['nextpagebutton']
+        nextpage = nextpage_tags['class']
         searchBar.send_keys(searchQuery)
         searchBar.send_keys(Keys.ENTER)
         sleep(3)
 
-        productgrid_tags = doc['searching_page_tags']['productgrid'][0]
-        productlist_tags = doc['searching_page_tags']['productlist'][0]
+        productgrid_tags = doc['searching_page_tags']['productgrid']
+        productlist_tags = doc['searching_page_tags']['productlist']
 
         toshow = []
         try:
 
-            productgrid = WebDriverWait(driver, 5).until(
-                EC.presence_of_element_located((By.XPATH, productgrid_tags['xpath']))
-            )
-            productlist = productgrid.find_elements(By.CLASS_NAME, productlist_tags['class'])
 
-            for products in productlist:
-                title_tag = doc['searching_page_tags']['productname'][0]
-                image_tag = doc['searching_page_tags']['productimage'][0]
-                link_tag = doc['searching_page_tags']['producturl'][0]
-                price_tag = doc['searching_page_tags']['productprice']
-                ratings_tag = doc['searching_page_tags']['productratings']
-                no_of_ratings = doc['searching_page_tags']['product_no_of_ratings']
+            while element_exists(driver, By.CLASS_NAME, nextpage):
 
-                try:
-                    eachproduct = {
-                        'title': products.find_element(By.CLASS_NAME, title_tag['class']).text,
-                        'platform': doc['name'],
-                        'link': products.find_element(By.CLASS_NAME, link_tag['class']).get_attribute('href'),
-                        'image': products.find_element(By.CLASS_NAME, image_tag['class']).get_attribute('src'),
-                        'price': prices_formatter(products.find_element(By.CLASS_NAME, price_tag['class']).text),
-                        'ratings': ratings(products.find_element(By.CLASS_NAME, ratings_tag['class']).text) if element_exists(products, By.CLASS_NAME, ratings_tag['class']) else 'NA',
-                        'no_of_ratings': products.find_element(By.CLASS_NAME,no_of_ratings['class']).text if element_exists(products,By.CLASS_NAME,no_of_ratings['class']) else 'NA'
-                    }
+                productgrid = WebDriverWait(driver, 5).until(
+                    EC.presence_of_element_located((By.XPATH, productgrid_tags['xpath']))
+                )
+                productlist = productgrid.find_elements(By.CLASS_NAME, productlist_tags['class'])
 
+                for products in productlist:
+                    title_tag = doc['searching_page_tags']['productname']
+                    image_tag = doc['searching_page_tags']['productimage']
+                    link_tag = doc['searching_page_tags']['producturl']
+                    price_tag = doc['searching_page_tags']['productprice']
+                    ratings_tag = doc['searching_page_tags']['productratings']
+                    no_of_ratings = doc['searching_page_tags']['product_no_of_ratings']
 
-                    toshow.append(eachproduct)
-                except Exception as e:
-                    print(f"Error processing one product.")
-                    # print(f"Error processing product: {e}")
-        except NoSuchElementException as noElementFound:
+                    try:
+                        eachproduct = {
+                            'title': products.find_element(By.CLASS_NAME, title_tag['class']).text,
+                            'platform': doc['name'],
+                            'link': products.find_element(By.CLASS_NAME, link_tag['class']).get_attribute('href'),
+                            'image': products.find_element(By.CLASS_NAME, image_tag['class']).get_attribute('src'),
+                            'price': prices_formatter(products.find_element(By.CLASS_NAME, price_tag['class']).text),
+                            'ratings': ratings(products.find_element(By.CLASS_NAME, ratings_tag['class']).get_attribute('innerHTML')) if element_exists(products, By.CLASS_NAME, ratings_tag['class']) else '0',
+                            'no_of_ratings': products.find_element(By.CLASS_NAME,no_of_ratings['class']).text if element_exists(products,By.CLASS_NAME,no_of_ratings['class']) else '0'
+                        }
+                        print(f"Link: {eachproduct['link']}")
+                        print(f"Image: {eachproduct['image']}")
+                        print(f"Title: {eachproduct['title']}")
+                        print(f"Price: Rs.{eachproduct['price']}")
+                        print(f"Ratings: {eachproduct['ratings']}")
+                        print(f"No of ratings: {eachproduct['no_of_ratings']}")
+                        print("-" * 40)
+                        toshow.append(eachproduct)
+                    except Exception as e:
+                        print(f"Error processing one product.")
+                        # print(f"Error processing product: {e}")
+                print("Going to next page")
+                driver.find_element(By.CLASS_NAME, nextpage).click()
+                sleep(5)
+
+        except NoSuchElementException:
             print("The Elements were not found")
 
         # Print product details
@@ -122,6 +136,8 @@ def main_web_scrapper():
             print(f"Image: {product['image']}")
             print(f"Title: {product['title']}")
             print(f"Price: Rs.{product['price']}")
+            print(f"Ratings: {product['ratings']}")
+            print(f"No of ratings: {product['no_of_ratings']}")
             print("-" * 40)
             add_to_database(product)
 
