@@ -168,6 +168,7 @@ def scrape_from_driver(doc, search_query, toshow):
         EC.presence_of_element_located((By.XPATH, productgrid_tags['xpath']))
     )
     productlist = productgrid.find_elements(By.CLASS_NAME, productlist_tags['class'])
+    sleep(3)
 
     for products in productlist:
         title_tag = doc['searching_page_tags']['productname']
