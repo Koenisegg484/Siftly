@@ -9,8 +9,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from WebScrapper.MainWebScrapper import add_to_database, element_exists, ecommstores
-from WebScrapper.middlewares_fns import prices_formatter, ratings
+from WebScrapper.middlewares_fns import ratings
 
+def printsWeb(abc):
+    print("WebScrapper" + abc)
 
 def tester():
     # Set up Chrome options
