@@ -1,0 +1,68 @@
+[
+  {
+    "title": "Best Deal",
+    "subtitle": "Save up to",
+    "discount": "50%",
+    "imageUrls": [
+      "https://i.ibb.co/J2BtZdg/Rectangle-56-1.png",
+      "https://i.ibb.co/rGfP7mp/Rectangle-59-1.png"
+    ],
+    "buttonText": "Shop Now",
+    "buttonLink": "#",
+    "secondary": {
+      "title": "Limited Time Offer",
+      "subtitle": "Don't miss out!",
+      "discount": "20%",
+      "imageUrls": [
+        "https://i.ibb.co/J2BtZdg/Rectangle-56-2.png",
+        "https://i.ibb.co/rGfP7mp/Rectangle-59-2.png"
+      ],
+      "buttonText": "Grab It Now",
+      "buttonLink": "#"
+    }
+  },
+  {
+    "title": "Game Console",
+    "subtitle": "Save Up to",
+    "discount": "30%",
+    "imageUrls": [
+      "https://i.ibb.co/J2BtZdg/Rectangle-56-1.png",
+      "https://i.ibb.co/rGfP7mp/Rectangle-59-1.png"
+    ],
+    "buttonText": "Buy Now",
+    "buttonLink": "#",
+    "secondary": {
+      "title": "New Releases",
+      "subtitle": "Check out the latest!",
+      "discount": "15%",
+      "imageUrls": [
+        "https://i.ibb.co/J2BtZdg/Rectangle-56-3.png",
+        "https://i.ibb.co/rGfP7mp/Rectangle-59-3.png"
+      ],
+      "buttonText": "Explore More",
+      "buttonLink": "#"
+    }
+  },
+  {
+    "title": "Game Console",
+    "subtitle": "Save Up to",
+    "discount": "30%",
+    "imageUrls": [
+      "https://i.ibb.co/J2BtZdg/Rectangle-56-1.png",
+      "https://i.ibb.co/rGfP7mp/Rectangle-59-1.png"
+    ],
+    "buttonText": "Buy Now",
+    "buttonLink": "#",
+    "secondary": {
+      "title": "New Releases",
+      "subtitle": "Check out the latest!",
+      "discount": "15%",
+      "imageUrls": [
+        "https://i.ibb.co/J2BtZdg/Rectangle-56-3.png",
+        "https://i.ibb.co/rGfP7mp/Rectangle-59-3.png"
+      ],
+      "buttonText": "Explore More",
+      "buttonLink": "#"
+    }
+  }
+]

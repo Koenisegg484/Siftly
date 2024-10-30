@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Amazon India",
+        "description": "Shop millions of products at great prices.",
+        "price": "SBI credit card",
+        "startDate": "2024-01-01",
+        "endDate": "2024-12-31",
+        "creditCardIcon": "fa-credit-card",
+        "ecommerceIcon": "fa-amazon",
+        "backgroundImage": "https://images.indianexpress.com/2024/09/amazon-great-indian-festival.jpg?w=640"
+    },
+    {
+        "title": "Flipkart",
+        "description": "Your one-stop shop for all electronics.",
+        "price": "HDFC credit card",
+        "startDate": "2024-01-01",
+        "endDate": "2024-12-31",
+        "creditCardIcon": "fa-credit-card",
+        "ecommerceIcon": "fa-shopping-cart",
+        "backgroundImage": "https://www.91-cdn.com/hub/wp-content/uploads/2024/09/Flipkart-Big-Billion-Days-sale.png?tr=w-781"
+    },
+    {
+        "title": "Myntra",
+        "description": "Fashion and lifestyle products at your fingertips.",
+        "price": "One Card",
+        "startDate": "2024-01-01",
+        "endDate": "2024-12-31",
+        "creditCardIcon": "fa-credit-card",
+        "ecommerceIcon": "fa-shopping-bag",
+        "backgroundImage": "https://www.hindustantimes.com/ht-img/img/2024/09/18/550x309/aso_banner_1920x1080_1726654470838_1726654483969.png"
+    }
+]

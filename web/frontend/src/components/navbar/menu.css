@@ -1,0 +1,47 @@
+/* Checkbox.css */
+.hamburger {
+	cursor: pointer;
+	position: relative;
+  }
+  
+  .hamburger input {
+	display: none;
+  }
+  
+  .hamburger svg {
+	height: 3em;
+	transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .line {
+	fill: none;
+	stroke: black;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 3;
+	transition: 
+	  stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+	  stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1),
+	  stroke 600ms ease;
+  }
+  
+  .line-top-bottom {
+	stroke-dasharray: 12 63;
+  }
+  
+  .hamburger input:checked + svg {
+	transform: rotate(-45deg);
+  }
+  
+  .hamburger input:checked + svg .line {
+	stroke: white;
+  }
+  
+  .hamburger input:checked + svg .line-top-bottom {
+	stroke-dasharray: 20 300;
+	stroke-dashoffset: -32.42;
+  }
+  
+  .nav{
+  font-family: 'Krona One', sans-serif;
+  }
