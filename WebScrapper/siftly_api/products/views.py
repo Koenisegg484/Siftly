@@ -1,3 +1,4 @@
+from grpc import Status
 from .WebScrapper.MainWebScrapper import main_web_scrapper_with_driver
 from .models import ecommstores_collection, products_collection
 from django.http import HttpResponse, JsonResponse
@@ -9,66 +10,91 @@ def index(request):
     return HttpResponse("You are in the Ecomm Stores section")
 
 
-
 def get_stores(request):
     stores = ecommstores_collection.find()
-    print(stores)
     stores = list(stores)
-    if not stores:
-      return JsonResponse({
-        'message': 'No stores found.'
-      }, status=404)
 
-    json_stores = dumps(stores)
-    return JsonResponse(json_stores, safe=False)
+    # Convert ObjectId fields to strings
+    stores = convert_objectid(stores)
+
+    if not stores:
+        return JsonResponse({
+            'message': 'No stores found.'
+        }, status=404)
+
+    # Return the stores as a JSON response
+    return JsonResponse(stores, safe=False)
 
 
 # Utility to convert ObjectId to string
 def convert_objectid(data):
     if isinstance(data, list):
         for item in data:
-            item['_id'] = str(item['_id'])
+            if '_id' in item:  # Check if '_id' exists
+                item['_id'] = str(item['_id'])
     elif isinstance(data, dict):
-        data['_id'] = str(data['_id'])
+        if '_id' in data:  # Check if '_id' exists
+            data['_id'] = str(data['_id'])
     return data
 
 
-
 def web_scrapper(request, search_query):
-  searched_products = main_web_scrapper_with_driver(search_query)
+    searched_products = main_web_scrapper_with_driver(search_query)
 
-  print(searched_products)
+    if not searched_products:
+        return JsonResponse({
+            'message': 'No products found.',
+            'products': []
+        }, status=404)
 
-  # if not searched_products:
-  #   return JsonResponse({
-  #     'message': 'There were no such products found',
-  #     'products': {}
-  #   }, status=404)
-  products_collection.insert_many(searched_products)
-  searched_products = [convert_objectid(product) for product in searched_products]
-  response_data = {
-    'message': 'Products scraped and added successfully!',
-    'products': searched_products
-  }
+    # Convert ObjectId to strings
+    searched_products = [convert_objectid(product) for product in searched_products]
 
-  return JsonResponse(response_data, status=200)
+    response_data = {
+        'message': 'Products scraped and added successfully!',
+        'products': searched_products
+    }
 
-
+    return JsonResponse(response_data, status=200)
 
 
-def get_products():
-  products = products_collection.find()
-  products = list(products)
-  if not products:
+def get_products(request):
+    products = products_collection.find()
+    products = list(products)
+    
+    if not products:
+        return JsonResponse({
+            'message': "No products found"
+        }, status=404)
+
+    json_products = dumps(products)
+    response_data = {
+        'message': "Products",
+        'products': json_products
+    }
+    return JsonResponse(response_data, status=200)
+
+
+def search_products(request, search_string):
+    if not search_string:
+        return JsonResponse({'message': 'Please provide a search query.'}, status=400)
+
+    search_results = products_collection.find({
+        "title": {"$regex": search_string, "$options": "i"}  # Case-insensitive search
+    })
+
+    search_results = [
+        {**product, '_id': str(product['_id'])} for product in search_results
+    ]
+
+    if not search_results:
+        return JsonResponse({'message': 'No products found.'}, status=404)
+
     return JsonResponse({
-      'message' : "No products found"
-    }, status=404)
+        'message': 'Search results found!',
+        'products': search_results
+    }, status=200)
 
-  jsos_products = dumps(products)
-  return JsonResponse({
-    'message' : "Products",
-    'products' : jsos_products
-  })
 
 #   def add_store(request):
 #     stores = [

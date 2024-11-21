@@ -8,8 +8,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from WebScrapper.MainWebScrapper import add_to_database, element_exists, ecommstores
-from WebScrapper.middlewares_fns import ratings
+# from WebScrapper.MainWebScrapper import add_to_database, element_exists, ecommstores
+# from WebScrapper.middlewares_fns import ratings
 
 def printsWeb(abc):
     print("WebScrapper" + abc)
@@ -17,7 +17,7 @@ def printsWeb(abc):
 def tester():
     # Set up Chrome options
     chrome_options = Options()
-    chrome_options.page_load_strategy = 'none'
+    chrome_options.page_load_strategy = 'eager'
 
     # Initialize the Chrome driver with the options
     driver = webdriver.Chrome(service=Service(), options=chrome_options)
@@ -46,6 +46,7 @@ def tester():
     )
     searchbar.send_keys(searchquery)
     searchbar.send_keys(Keys.ENTER)
+    sleep(10)
 
     # Wait for the product grid to be present
     productgrid = WebDriverWait(driver, 10).until(
@@ -78,8 +79,8 @@ def tester():
         print(f"Price: {product['price']}")
         print("-" * 40)
 
-    print("Ending driver in 10 seconds")
-    sleep(10)
+    # print("Ending driver in 10 seconds")
+    # sleep(10)
 
     driver.quit()
 
@@ -184,7 +185,6 @@ def main_web_scrapper32():
 
 
 def main_web_scrapper():
-
     documents = ecommstores.find()
 
     # print (documents)
@@ -282,3 +282,5 @@ def main_web_scrapper():
         sleep(10)
 
         driver.quit()
+
+tester()
