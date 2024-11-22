@@ -20,7 +20,6 @@ const CardOffer: React.FC<Offer> = ({
   endDate,
   creditCardIcon,
   ecommerceIcon,
-  backgroundImage, // Destructure the backgroundImage prop
 }) => {
   return (
     <div
@@ -31,11 +30,6 @@ const CardOffer: React.FC<Offer> = ({
     >
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          filter: "blur(8px)", // Apply the blur effect
-          zIndex: 0, // Place it behind the content
-        }}
       />
       <div
         className="flex flex-col justify-center items-center p-6"

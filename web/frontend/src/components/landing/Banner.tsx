@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import bannerData from "../../static/banner.json"; // Import the JSON data directly
+import bannerData from "../../constants/banner.json"; // Import the JSON data directly
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+
 
 // Import Swiper core and required modules directly from 'swiper'
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -30,13 +31,13 @@ const Banner: React.FC = () => {
         autoplay={{ delay: 5000 }}
         loop
         modules={[Navigation, Pagination, Autoplay]}
-        className="w-full" 
+        className="w-full"
       >
         {bannerItems.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="flex items-stretch justify-center flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 lg:space-x-8">
               {/* Main Banner Section */}
-              <div className="flex flex-col md:flex-row items-stretch justify-between bg-gray-50 dark:bg-gray-800 py-6 px-6 md:py-12 lg:px-12 md:w-8/12 lg:w-7/12 xl:w-8/12 2xl:w-9/12">
+              <div className="flex flex-col md:flex-row items-stretch justify-between bg-gray-100 dark:bg-gray-800 transition-colors py-6 px-6 md:py-12 lg:px-12 md:w-8/12 lg:w-7/12 xl:w-8/12 2xl:w-9/12">
                 <div className="flex flex-col justify-center md:w-1/2">
                   <h1 className="text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-white">
                     {item.title}
@@ -65,13 +66,13 @@ const Banner: React.FC = () => {
               </div>
 
               {/* Secondary Banner Section */}
-              <div className="md:w-4/12 lg:w-5/12 xl:w-4/12 2xl:w-3/12 bg-gray-50 dark:bg-gray-800 py-6 px-6 md:py-0 md:px-4 lg:px-6 flex flex-col justify-center relative">
+              <div className="md:w-4/12 lg:w-5/12 xl:w-4/12 2xl:w-3/12 bg-gray-100 dark:bg-gray-800 py-6 px-6 md:py-0 md:px-4 lg:px-6 flex flex-col justify-center relative">
                 <div className="flex flex-col justify-center">
                   <h1 className="text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-white">
                     {item.secondary.title}
                   </h1>
                   <p className="text-base lg:text-xl text-gray-800 dark:text-white">
-                    Save Upto{" "}
+                    {item.secondary.subtitle}{" "}
                     <span className="font-bold">{item.secondary.discount}</span>
                   </p>
                   <div className="mt-4">

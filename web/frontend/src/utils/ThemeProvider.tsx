@@ -1,4 +1,3 @@
-// ThemeContext.tsx
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface ThemeContextType {
@@ -9,22 +8,34 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 interface ThemeProviderProps {
-  children: ReactNode; // Use ReactNode for children prop
+  children: ReactNode;
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-
-  useEffect(() => {
-    const savedMode = localStorage.getItem('darkMode');
-    if (savedMode) {
-      setIsDarkMode(savedMode === 'true');
+  // Initialize with a default value of false
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    try {
+      const savedMode = localStorage.getItem('darkMode');
+      return savedMode ? JSON.parse(savedMode) : false;
+    } catch {
+      return false;
     }
-  }, []);
+  });
 
+  // Update localStorage and class whenever isDarkMode changes
   useEffect(() => {
-    localStorage.setItem('darkMode', String(isDarkMode));
-    document.documentElement.classList.toggle('dark', isDarkMode);
+    try {
+      localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
+      console.log('Saved to localStorage:', isDarkMode); // Debug log
+      
+      if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    } catch (error) {
+      console.error('Error updating dark mode:', error);
+    }
   }, [isDarkMode]);
 
   return (

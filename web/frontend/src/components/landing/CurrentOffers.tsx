@@ -1,6 +1,6 @@
 // CurrentOffers.tsx
 import React, { useEffect, useState } from "react";
-import offersData from "../../static/offers.json"; // Adjust the path as necessary
+import offersData from "../../constants/offers.json"; // Adjust the path as necessary
 import CardOffer from "../../utils/OfferCard";
 
 interface Offer {
@@ -11,7 +11,6 @@ interface Offer {
   endDate: string;
   creditCardIcon: string;
   ecommerceIcon: string;
-  backgroundImage: string; // Include backgroundImage in the interface
 }
 
 const CurrentOffers: React.FC = () => {
@@ -39,8 +38,9 @@ const CurrentOffers: React.FC = () => {
 
   return (
     <>
-      <h2 className="text-3xl font-bold text-center mb-8">Ongoing Sales</h2>
-      <div className="flex flex-wrap justify-center gap-8 p-8">
+     <div className="py-10 dark:bg-gray-800 mt-4">
+      <h2 className="text-3xl font-bold text-center mb-4 dark:bg-gray-800 dark:text-white">Ongoing & Upcoming Sales</h2>
+      <div className="flex flex-wrap justify-center gap-8 p-8 dark:bg-gray-800">
         {offers.map((offer, index) => (
           <CardOffer
             key={index}
@@ -51,9 +51,9 @@ const CurrentOffers: React.FC = () => {
             endDate={offer.endDate}
             creditCardIcon={offer.creditCardIcon}
             ecommerceIcon={offer.ecommerceIcon}
-            backgroundImage={offer.backgroundImage} // Pass the background image
           />
         ))}
+      </div>
       </div>
     </>
   );

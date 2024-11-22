@@ -55,9 +55,9 @@ def check_product_exists(item):
 def scrape_from_driver(doc, search_query, toshow):
     # Initialize the Chrome browser with headless option and custom settings
     chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--no-sandbox")
+    # chrome_options.add_argument("--headless")
+    # chrome_options.add_argument("--disable-gpu")
+    # chrome_options.add_argument("--no-sandbox")
     chrome_options.page_load_strategy = 'eager'
     driver = webdriver.Chrome(service=Service(), options=chrome_options)
     driver.maximize_window()
