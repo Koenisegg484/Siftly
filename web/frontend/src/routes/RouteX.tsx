@@ -1,7 +1,12 @@
-import { Routes, Route } from 'react-router-dom'; // Ensure correct imports
-import LandingPage from '../pages/LandingPage';
-import Product from '../pages/Product';
-import Auth from '../pages/Auth';
+import { Routes, Route } from "react-router-dom"; // Ensure correct imports
+import LandingPage from "../pages/LandingPage";
+import Product from "../pages/Product";
+import Auth from "../pages/Auth";
+import About from "../pages/menuPages/About";
+import FAQ from "../pages/menuPages/FAQ";
+import Contact from "../pages/menuPages/Contact";
+import Info from "../pages/menuPages/Info";
+import Categories from "../pages/Categories";
 
 // Define the type for each route object
 type RouteConfig = {
@@ -13,16 +18,38 @@ const RouteX: React.FC = () => {
   // Define routes with type annotations
   const routes: RouteConfig[] = [
     {
-      route: '/',
+      route: "/",
       element: <LandingPage />,
     },
     {
-      route: '/product',
+      route: "/product",
       element: <Product />,
     },
     {
-      route: '/auth',
+      route: "/category/:categoryName",
+      element: <Categories />,
+    },
+    // auth routes
+    {
+      route: "/auth",
       element: <Auth />,
+    },
+    // menu routes
+    {
+      route: "/about",
+      element: <About />,
+    },
+    {
+      route: "/faq",
+      element: <FAQ />,
+    },
+    {
+      route: "/contact",
+      element: <Contact />,
+    },
+    {
+      route: "/info",
+      element: <Info />,
     },
   ];
 

@@ -24,10 +24,15 @@ const Menu: React.FC = () => {
 
       if (isOpen) {
         document.body.style.overflow = "hidden"; // Disable body scroll
-        tl.fromTo(menu, { opacity: 0, y: "-100%" }, { opacity: 1, y: "0%" })
-          .set(menu, { visibility: "visible" });
+        tl.fromTo(
+          menu,
+          { opacity: 0, y: "-100%" },
+          { opacity: 1, y: "0%" }
+        ).set(menu, { visibility: "visible" });
       } else {
-        tl.to(menu, { opacity: 0, y: "100%" }).set(menu, { visibility: "hidden" });
+        tl.to(menu, { opacity: 0, y: "100%" }).set(menu, {
+          visibility: "hidden",
+        });
       }
     }
   }, [isOpen]);
@@ -45,7 +50,10 @@ const Menu: React.FC = () => {
             onChange={() => setIsOpen((prev) => !prev)}
             style={{ display: "none" }}
           />
-          <svg viewBox="0 0 32 32" className="w-8 h-8 text-white cursor-pointer">
+          <svg
+            viewBox="0 0 32 32"
+            className="w-8 h-8 text-white  cursor-pointer"
+          >
             <path
               className="line line-top-bottom"
               d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
@@ -64,34 +72,50 @@ const Menu: React.FC = () => {
         style={{ visibility: isOpen ? "visible" : "hidden" }}
       >
         <div className="flex justify-between items-cente px-8 pt-6 shadow-md">
-          <h1 className="text-xl text-white font-semibold cursor-pointer" onClick={()=>navigate({ pathname: '/' })}>Siftly</h1>
+          <h1
+            className="text-xl text-white font-semibold cursor-pointer"
+            onClick={() => navigate({ pathname: "/" })}
+          >
+            Siftly
+          </h1>
         </div>
 
         {/* middle */}
         <div className="flex items-center justify-evenly h-3/4 m-5 ">
           <div className="m-5">
             <div className="flex flex-col m-5">
-            <a href="#" className="m-2">Github</a>
-              <a href="#" className="m-2">Linkedin</a>
-              <a href="#" className="m-2">Twitter</a>
-              <a href="#" className="m-2">Instagram</a>
+              <a
+                onClick={() => navigate({ pathname: "/auth" })}
+                className="m-2"
+              >
+                Github
+              </a>
+              <a href="#" className="m-2">
+                Linkedin
+              </a>
+              <a href="#" className="m-2">
+                Twitter
+              </a>
+              <a href="#" className="m-2">
+                Instagram
+              </a>
             </div>
           </div>
-          <div className="flex flex-col text-5xl font-semibold">
-            <div className="m-3">
-              <a href="#">About</a>
+          <div className="flex flex-col text-5xl font-semibold ">
+            <div className="m-3 cursor-pointer">
+              <a onClick={() => navigate({ pathname: "/about" })}>About</a>
             </div>
-            <div className="m-3">
-              <a href="#">Categories</a>
+            <div className="m-3 cursor-pointer">
+              <a onClick={() => navigate({ pathname: "/" })}>Categories</a>
             </div>
-            <div className="m-3">
-              <a href="#">Products</a>
+            <div className="m-3 cursor-pointer">
+              <a onClick={() => navigate({ pathname: "/" })}>Products</a>
             </div>
-            <div className="m-3">
-              <a href="#">FAQ</a>
+            <div className="m-3 cursor-pointer">
+              <a onClick={() => navigate({ pathname: "/faq" })}>FAQ</a>
             </div>
-            <div className="m-3">
-              <a href="#">Contact</a>
+            <div className="m-3 cursor-pointer">
+              <a onClick={() => navigate({ pathname: "/contact" })}>Contact</a>
             </div>
           </div>
         </div>
@@ -99,13 +123,13 @@ const Menu: React.FC = () => {
         {/* last */}
         <div className="flex justify-between p-8">
           <div className="">
-            <a href="#" className="p-5">
+            <a onClick={() => navigate({ pathname: "/info" })} className="p-5 cursor-pointer">
               Privacy policy
             </a>
-            <a href="#" className="p-5">
+            <a onClick={() => navigate({ pathname: "/info" })} className="p-5 cursor-pointer">
               Cookie policy
             </a>
-            <a href="#" className="p-5">
+            <a onClick={() => navigate({ pathname: "/info" })} className="p-5 cursor-pointer">
               Terms and conditions
             </a>
           </div>

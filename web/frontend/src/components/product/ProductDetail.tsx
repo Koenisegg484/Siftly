@@ -24,8 +24,6 @@ type ProductDetailItem = {
   color: string[];
 };
 
-
-
 const ProductDetail: React.FC = () => {
   const [quantity, setQuantity] = useState(1);
 
@@ -33,45 +31,27 @@ const ProductDetail: React.FC = () => {
     images: [
       {
         original:
-          "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://plus.unsplash.com/premium_photo-1679513691474-73102089c117?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8U29ueSUyMGhlYWRwaG9uZXN8ZW58MHx8MHx8fDA%3D",
         thumbnail:
-          "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://plus.unsplash.com/premium_photo-1679513691474-73102089c117?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8U29ueSUyMGhlYWRwaG9uZXN8ZW58MHx8MHx8fDA%3D",
       },
       {
         original:
-          "https://images.pexels.com/photos/1667088/pexels-photo-1667088.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://plus.unsplash.com/premium_photo-1679513691474-73102089c117?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8U29ueSUyMGhlYWRwaG9uZXN8ZW58MHx8MHx8fDA%3D",
         thumbnail:
-          "https://images.pexels.com/photos/1667088/pexels-photo-1667088.jpeg?auto=compress&cs=tinysrgb&w=600",
-      },
-      {
-        original:
-          "https://images.pexels.com/photos/2697787/pexels-photo-2697787.jpeg?auto=compress&cs=tinysrgb&w=600",
-        thumbnail:
-          "https://images.pexels.com/photos/2697787/pexels-photo-2697787.jpeg?auto=compress&cs=tinysrgb&w=600",
-      },
-      {
-        original:
-          "https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        thumbnail:
-          "https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      },
-      {
-        original:
-          "https://images.pexels.com/photos/3910071/pexels-photo-3910071.jpeg?auto=compress&cs=tinysrgb&w=600",
-        thumbnail:
-          "https://images.pexels.com/photos/3910071/pexels-photo-3910071.jpeg?auto=compress&cs=tinysrgb&w=600",
+          "https://plus.unsplash.com/premium_photo-1679513691474-73102089c117?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8U29ueSUyMGhlYWRwaG9uZXN8ZW58MHx8MHx8fDA%3D",
       },
     ],
-    title: "BIG ITALIAN SOFA",
+    title: "Sony WH-1000XM4",
     reviews: "150",
-    availability: true,
+    availability: false,
     brand: "Apex",
-    category: "Sofa",
+    category: "Headphones",
     sku: "BE45VGTRK",
     price: 450,
     previousPrice: 599,
     description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem exercitationem voluptate sint eius ea assumenda provident eos repellendus qui neque! Velit ratione illo maiores voluptates commodi eaque illum, laudantium non!",
+      "Industry-leading noise canceling with dual noise sensor technology",
     size: ["XS", "S", "M", "L", "XL"],
     color: ["gray", "violet", "red"],
   };
@@ -90,22 +70,31 @@ const ProductDetail: React.FC = () => {
   };
 
   // Before: Using defaultProps
-const Rater = ({ rating = 5, stars = 5 }: { rating?: number; stars?: number }) => {
-  return <div>Rating: {rating} / {stars}</div>;
-};
-
+  const Rater = ({
+    rating = 5,
+    stars = 5,
+  }: {
+    rating?: number;
+    stars?: number;
+  }) => {
+    return (
+      <div>
+        Rating: {rating} / {stars}
+      </div>
+    );
+  };
 
   return (
-    <section className="container flex-grow mx-auto max-w-[1200px] border-b py-5 lg:grid lg:grid-cols-2 lg:gap-10 lg:py-10">
+    <section className="container flex-grow mx-auto max-w-[1200px] border-b py-5 lg:grid lg:grid-cols-2 lg:gap-20 lg:py-10">
       {/* Image Gallery */}
-      <div className="mx-auto w-full lg:w-[80%]">
+      <div className="mx-auto w-full lg:w-[100%]">
         <ReactImageGallery
           items={productDetailItem.images}
-          showBullets={false}
+          showBullets={true}
           showFullscreenButton={false}
           showPlayButton={false}
           showThumbnails={true}
-          additionalClass="image-gallery-container" // Additional class for image gallery
+          additionalClass="image-gallery-container"
         />
       </div>
 
@@ -146,9 +135,9 @@ const Rater = ({ rating = 5, stars = 5 }: { rating?: number; stars?: number }) =
           SKU: <span className="font-normal">{productDetailItem.sku}</span>
         </p>
         <p className="mt-4 text-4xl font-bold text-violet-900">
-        ₹{productDetailItem.price}{" "}
+          ₹{productDetailItem.price}{" "}
           <span className="text-xs text-gray-400 line-through">
-          ₹{productDetailItem.previousPrice}
+            ₹{productDetailItem.previousPrice}
           </span>
         </p>
         <p className="pt-5 text-sm leading-5 text-gray-500">
@@ -156,7 +145,7 @@ const Rater = ({ rating = 5, stars = 5 }: { rating?: number; stars?: number }) =
         </p>
 
         {/* Size Selection */}
-        <div className="mt-6">
+        {/* <div className="mt-6">
           <p className="pb-2 text-xs text-gray-500">Size</p>
           <div className="flex gap-1">
             {productDetailItem.size.map((size, index) => {
@@ -170,38 +159,7 @@ const Rater = ({ rating = 5, stars = 5 }: { rating?: number; stars?: number }) =
               );
             })}
           </div>
-        </div>
-
-        {/* Color Selection */}
-        <div className="mt-6">
-          <p className="pb-2 text-xs text-gray-500">Color</p>
-          <div className="flex gap-1">
-            {productDetailItem.color.map((color, index) => {
-              return (
-                <div
-                  key={index}
-                  className={`h-8 w-8 cursor-pointer border bg-${color}-600`}
-                />
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Quantity Selector */}
-        <div className="mt-6">
-          <p className="pb-2 text-xs text-gray-500">Quantity</p>
-          <div className="flex items-center">
-            <button className={plusMinusButtonClasses} onClick={decrementQuantity}>
-              −
-            </button>
-            <div className="flex h-8 w-8 items-center justify-center border-t border-b">
-              {quantity}
-            </div>
-            <button className={plusMinusButtonClasses} onClick={incrementQuantity}>
-              +
-            </button>
-          </div>
-        </div>
+        </div> */}
 
         {/* Action Buttons */}
         <div className="mt-7 flex flex-row items-center gap-6">
