@@ -102,7 +102,7 @@ def scrape_from_driver(doc, search_query, toshow):
                 'price': format_price(products.find_element(By.CLASS_NAME, price_tag['class']).text),
                 'price_history': [{
                     'dateTime': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                    'price': products.find_element(By.CLASS_NAME, price_tag['class']).text
+                    'price': format_price(products.find_element(By.CLASS_NAME, price_tag['class']).text)
                 }],
                 'ratings': ratings(products.find_element(By.CLASS_NAME, ratings_tag['class']).get_attribute('innerHTML')) if element_exists(products, By.CLASS_NAME, ratings_tag['class']) else '0',
                 'no_of_ratings': format_ratings(products.find_element(By.CLASS_NAME, no_of_ratings['class']).text) if element_exists(products, By.CLASS_NAME, no_of_ratings['class']) else '0'
