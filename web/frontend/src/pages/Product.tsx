@@ -1,9 +1,24 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import axios from "axios"; // Make sure to install axios
+
+import Navbar from "../components/navbar/Navbar";
 import ProductDetail from "../components/product/ProductDetail";
 import Graph from "../components/product/Graph";
 import Lowhigh from "../components/product/LowHigh";
-import Navbar from "../components/navbar/Navbar";
+
+interface LandProduct {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  priceHistory: {
+    platform: string;
+    prices: number[];
+    dates: string[];
+    url: string;
+  }[];
+}
 
 interface Product {
   _id: string;
@@ -15,11 +30,58 @@ interface Product {
   imageSrc?: string;
 }
 
-const Product = () => {
-  const location = useLocation();
-  const product = location.state?.product;
+const Product: React.FC = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  if (!product) {
+  const { productId } = useParams<{ productId: string }>();
+  const location = useLocation();
+  
+  // Get the apiUrl from the location state
+  const { apiUrl } = location.state || { apiUrl: "http://localhost:5000/api/land-products" }; // Default value
+
+  const [productData, setProductData] = useState<{ landProduct: LandProduct } | null>(null);
+
+  useEffect(() => {
+    const fetchProductData = async () => {
+      try {
+        // Fetch the product data using the API URL and productId
+        const response = await axios.get(`${apiUrl}/${productId}`);
+        
+        setProductData({ landProduct: response.data });
+      } catch (err) {
+        setError("Failed to fetch product data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (productId) fetchProductData();
+  }, [productId, apiUrl]); // Add apiUrl to the dependency array
+
+  if (loading) {
+    return (
+      <>
+        <Navbar />
+        <div className="flex justify-center items-center h-screen text-xl">
+          Loading...
+        </div>
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <Navbar />
+        <div className="flex justify-center items-center h-screen text-xl text-red-500">
+          {error}
+        </div>
+      </>
+    );
+  }
+
+  if (!productData) {
     return (
       <>
         <Navbar />
@@ -30,16 +92,17 @@ const Product = () => {
     );
   }
 
+  // console.log("pro",productData);
   return (
     <>
       <Navbar />
-      <ProductDetail product={product} />
+      <ProductDetail product={productData?.landProduct?.landProduct || productData.landProduct.product} />
       <div className="flex justify-between items-center">
-        <div style={{ flex: "2", padding: "10px" }}>
-          <Graph product={product} />
+        <div style={{ flex: "2" }}>
+          <Graph product={productData?.landProduct} />
         </div>
-        <div style={{ flex: "1", padding: "10px" }}>
-          <Lowhigh product={product} />
+        <div style={{ flex: "1" }}>
+          <Lowhigh product={productData?.landProduct} />
         </div>
       </div>
     </>

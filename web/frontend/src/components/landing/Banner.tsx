@@ -6,7 +6,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 
-
 // Import Swiper core and required modules directly from 'swiper'
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -23,7 +22,7 @@ const Banner: React.FC = () => {
   const [bannerItems] = useState<BannerItem[]>(bannerData); // Use the imported JSON data
 
   return (
-    <div className="container mx-auto max-w-[1800px] py-5 md:py-6 px-2 md:px-1">
+    <div className="container mx-auto max-w-[1800px] py-5 md:py-6 px-2 md:px-1 ">
       <Swiper
         spaceBetween={30}
         navigation
@@ -35,7 +34,10 @@ const Banner: React.FC = () => {
       >
         {bannerItems.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="flex items-stretch justify-center flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 lg:space-x-8">
+            <div
+              className="flex items-stretch justify-center flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 lg:space-x-8"
+              style={{ height: "250px" }} // Fixed height for the banner
+            >
               {/* Main Banner Section */}
               <div className="flex flex-col md:flex-row items-stretch justify-between bg-gray-100 dark:bg-gray-800 transition-colors py-6 px-6 md:py-12 lg:px-12 md:w-8/12 lg:w-7/12 xl:w-8/12 2xl:w-9/12">
                 <div className="flex flex-col justify-center md:w-1/2">
@@ -87,9 +89,9 @@ const Banner: React.FC = () => {
 
                 <div className="flex justify-end md:absolute md:bottom-4 md:right-4 lg:bottom-0 lg:right-0">
                   <img
-                    src={item.imageUrls[1]} // Second image
+                    src={item.secondary.imageUrls[1]} // Second image
                     alt={`${item.title} Image 2`}
-                    className="md:w-20 md:h-20 lg:w-full lg:h-full"
+                    className="md:w-20 md:h-20 lg:w-full lg:h-full "
                   />
                 </div>
               </div>

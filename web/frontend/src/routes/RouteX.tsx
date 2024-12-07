@@ -7,6 +7,7 @@ import FAQ from "../pages/menuPages/FAQ";
 import Contact from "../pages/menuPages/Contact";
 import Info from "../pages/menuPages/Info";
 import Categories from "../pages/Categories";
+import Search from "../pages/Search";
 
 // Define the type for each route object
 type RouteConfig = {
@@ -22,12 +23,20 @@ const RouteX: React.FC = () => {
       element: <LandingPage />,
     },
     {
-      route: "/product",
+      route: "/products/:productId",
+      element: <Product />,
+    },
+    {
+      route: "/land-product/:productId",
       element: <Product />,
     },
     {
       route: "/category/:categoryName",
       element: <Categories />,
+    },
+    {
+      route: "/search",
+      element: <Search />,
     },
     // auth routes
     {

@@ -1,5 +1,9 @@
 {
   "files": [],
+  "compilerOptions": {
+    "lib": ["dom", "esnext"], // Ensure DOM types are included for browser projects
+    "types": ["node"]         // Include Node.js types
+  },
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }

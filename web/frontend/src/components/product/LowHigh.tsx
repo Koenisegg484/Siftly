@@ -1,8 +1,28 @@
 import React from 'react';
-import priceData from './graph.json';  // Importing JSON data
 
-const Lowhigh = () => {
+type product = {
+  images: string;
+  title: string;
+  reviews: string;
+  availability: boolean;
+  brand: string;
+  category: string;
+  sku: string;
+  price: number;
+  previousPrice: number;
+  description: string;
+  size: string[];
+  color: string[];
+};
+
+// interface product {
+//   productDetailItem: ProductDetailItem;
+// }
+
+const Lowhigh: React.FC<product> = ({ product }) => {
   // Find the global lowest and highest prices
+  const priceData =  (product.landProduct.priceHistory);
+  console.log(priceData);
   const globalPrices = priceData.flatMap(platform => platform.prices);
   const globalLowestPrice = Math.min(...globalPrices);
   const globalHighestPrice = Math.max(...globalPrices);
@@ -21,16 +41,16 @@ const Lowhigh = () => {
   };
 
   return (
-    <div className="container mx-auto max-w-[800px] py-5">
+    <div className="container mx-auto py-5">
       <h2 className="text-2xl font-bold mb-4">Price Comparison</h2>
       <table className="min-w-full bg-white border border-gray-200">
         <thead>
           <tr className="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
-            <th className="py-3 px-6 text-left">Platform</th>
-            <th className="py-3 px-6 text-center">Lowest Price ($)</th>
-            <th className="py-3 px-6 text-center">Lowest Date</th>
-            <th className="py-3 px-6 text-center">Highest Price ($)</th>
-            <th className="py-3 px-6 text-center">Highest Date</th>
+            <th className="py-3 px-5 text-left">Platform</th>
+            <th className="py-3 px-5 text-center">Lowest Price (₹)</th>
+            <th className="py-3 px-7 text-center">Lowest Date</th>
+            <th className="py-3 px-5 text-center">Highest Price (₹)</th>
+            <th className="py-3 px-7 text-center">Highest Date</th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-sm">

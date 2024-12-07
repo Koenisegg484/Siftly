@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
 import axios from "axios";
 import Product from "./Product";
-import ProductCard2 from "../utils/ProductCard2";
+import ProductCardCategory from "../utils/ProductCardCategory";
 
 interface Product {
   _id: string;
@@ -28,7 +28,7 @@ const Categories: React.FC = () => {
       try {
         // Updated to match the format of the provided data
         const response = await axios.get(
-          "http://localhost:5000/api/getAllProducts"
+          "http://localhost:5000/api/products"
         );
 
       
@@ -80,7 +80,7 @@ const Categories: React.FC = () => {
       </h1>
       <div className="">
         {productsToDisplay.length > 0 ? (
-          <ProductCard2 products={productsToDisplay} />
+          <ProductCardCategory products={productsToDisplay} />
         ) : (
           <p className="col-span-full text-center text-lg">
             No products found{" "}

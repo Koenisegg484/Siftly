@@ -8,4 +8,8 @@ export interface IProduct extends Document {
   stock: number;
   createdAt?: Date;
   updatedAt?: Date;
+  platform: string;
+  prices: number[];
+  dates: string[];
+  photos: string;
 }

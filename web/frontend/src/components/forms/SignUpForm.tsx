@@ -3,6 +3,7 @@ import axios, { AxiosError } from "axios";
 import { ToastContainer, toast, ToastOptions } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/AuthContext"; // Adjust the import path as needed
 
 // Define TypeScript interfaces for better type safety
 interface SignUpFormProps {
@@ -30,6 +31,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onShowSignup }) => {
     password: [],
   });
   const navigate = useNavigate();
+  const { login } = useAuth(); // Use the login method from AuthContext
 
   // Toast Configuration
   const toastConfig: ToastOptions = {
@@ -40,7 +42,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onShowSignup }) => {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: "light", // or "dark"
+    theme: "light",
     style: {
       fontSize: "14px",
       maxWidth: "350px",
@@ -109,20 +111,23 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onShowSignup }) => {
           payload
         );
 
+        // Extract token from response
+        const token = response.data.token;
+
+        // Use the login method from AuthContext
+        login(token);
+
         toast.success("Sign up successful!", toastConfig);
-        localStorage.setItem("token", response.data.token);
+        
         setTimeout(() => {
-          // Replace with your actual navigation logic
           navigate("/");
         }, 3000);
-        // console.log("Sign-up successful:", response.data);
       } catch (error) {
         if (axios.isAxiosError(error)) {
           const axiosError = error as AxiosError;
           const errorMessage =
             axiosError.response?.data?.message || axiosError.message;
           toast.error(errorMessage, toastConfig);
-          // console.error("Sign-up failed:", errorMessage);
         } else {
           toast.error("An unexpected error occurred", toastConfig);
         }
@@ -132,6 +137,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onShowSignup }) => {
 
   return (
     <div className="relative py-3 w-1/3 sm:max-w-xl sm:mx-auto shadow-2xl rounded-3xl">
+            <ToastContainer />
       <div className="relative px-4 py-5 bg-white mx-4 md:mx-0 sm:p-10">
         <form onSubmit={handleSubmit}>
           <div className="max-w-md mx-auto">

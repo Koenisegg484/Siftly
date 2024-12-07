@@ -1,68 +1,61 @@
 [
   {
-    "title": "Best Deal",
+    "title": "Game Console",
+    "subtitle": "Save Up to",
+    "discount": "30%",
+    "imageUrls": ["https://i.ibb.co/J2BtZdg/Rectangle-56-1.png"],
+    "buttonText": "Buy Now",
+    "buttonLink": "http://localhost:5173/category/Electronics",
+    "secondary": {
+      "title": "New Releases",
+      "subtitle": "Check out the latest!",
+      "discount": "15%",
+      "imageUrls": [
+        "https://i.ibb.co/J2BtZdg/Rectangle-56-3.png",
+        "https://i.ibb.co/rGfP7mp/Rectangle-59-3.png"
+      ],
+      "buttonText": "Explore More",
+      "buttonLink": "http://localhost:5173/category/Electronics"
+    }
+  },
+  {
+    "title": "Limited Time Offer",
     "subtitle": "Save up to",
     "discount": "50%",
-    "imageUrls": [
-      "https://i.ibb.co/J2BtZdg/Rectangle-56-1.png",
-      "https://i.ibb.co/rGfP7mp/Rectangle-59-1.png"
-    ],
+    "imageUrls": ["https://res.cloudinary.com/dqhtnjrzm/image/upload/v1733513648/balls-of-different-sports-on-white-background-ai-generated-image-photo__1_-removebg-preview_qtteam_c_crop_w_560_h_150_ejvfp5.png"],
     "buttonText": "Shop Now",
-    "buttonLink": "#",
+    "buttonLink": "http://localhost:5173/category/Sports",
     "secondary": {
-      "title": "Limited Time Offer",
+      "title": "Best Deal",
       "subtitle": "Don't miss out!",
       "discount": "20%",
       "imageUrls": [
         "https://i.ibb.co/J2BtZdg/Rectangle-56-2.png",
-        "https://i.ibb.co/rGfP7mp/Rectangle-59-2.png"
+        "https://res.cloudinary.com/dqhtnjrzm/image/upload/v1733513718/pngimg.com_-_football_PNG52729_vvirev_c_fill_w_145_h_145_h9z38o.png"
       ],
       "buttonText": "Grab It Now",
-      "buttonLink": "#"
+      "buttonLink": "http://localhost:5173/category/Sports"
     }
   },
   {
-    "title": "Game Console",
+    "title": "Classic Literature",
     "subtitle": "Save Up to",
-    "discount": "30%",
+    "discount": "40%",
     "imageUrls": [
-      "https://i.ibb.co/J2BtZdg/Rectangle-56-1.png",
-      "https://i.ibb.co/rGfP7mp/Rectangle-59-1.png"
+      "https://res.cloudinary.com/dqhtnjrzm/image/upload/v1733512436/PngItem_1048886_y3tp5n.png"
     ],
     "buttonText": "Buy Now",
-    "buttonLink": "#",
+    "buttonLink": "http://localhost:5173/category/Books",
     "secondary": {
-      "title": "New Releases",
+      "title": "Scrap Books",
       "subtitle": "Check out the latest!",
       "discount": "15%",
       "imageUrls": [
         "https://i.ibb.co/J2BtZdg/Rectangle-56-3.png",
-        "https://i.ibb.co/rGfP7mp/Rectangle-59-3.png"
+        "https://res.cloudinary.com/dqhtnjrzm/image/upload/v1733513078/360851397_11432690_pti6eg_c_fill_w_145_h_145_g_auto_zq8vm2.png"
       ],
       "buttonText": "Explore More",
-      "buttonLink": "#"
-    }
-  },
-  {
-    "title": "Game Console",
-    "subtitle": "Save Up to",
-    "discount": "30%",
-    "imageUrls": [
-      "https://i.ibb.co/J2BtZdg/Rectangle-56-1.png",
-      "https://i.ibb.co/rGfP7mp/Rectangle-59-1.png"
-    ],
-    "buttonText": "Buy Now",
-    "buttonLink": "#",
-    "secondary": {
-      "title": "New Releases",
-      "subtitle": "Check out the latest!",
-      "discount": "15%",
-      "imageUrls": [
-        "https://i.ibb.co/J2BtZdg/Rectangle-56-3.png",
-        "https://i.ibb.co/rGfP7mp/Rectangle-59-3.png"
-      ],
-      "buttonText": "Explore More",
-      "buttonLink": "#"
+      "buttonLink": "http://localhost:5173/category/Books"
     }
   }
 ]

@@ -21,7 +21,7 @@ const Cookie: React.FC<CookieProps> = ({ onAccept, onDecline }) => {
   if (!isVisible) return null; // Render nothing if not visible
 
   return (
-    <div className="fixed bottom-10 left-10 w-30 z-50 bg-gray-500 border border-gray-300 rounded-3xl shadow-lg p-6">
+    <div className="fixed bottom-10 left-10 w-30 z-50 bg-gray-800 border border-gray-300 rounded-3xl shadow-lg p-6">
       <i className="flex justify-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"

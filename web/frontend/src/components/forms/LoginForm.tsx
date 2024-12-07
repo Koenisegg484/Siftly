@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/AuthContext";
 
 const LoginForm: React.FC<{ onShowSignup: () => void }> = ({
   onShowSignup,
@@ -15,7 +16,10 @@ const LoginForm: React.FC<{ onShowSignup: () => void }> = ({
     email: "",
     password: [] as string[],
   });
+  
   const navigate = useNavigate();
+  const { login } = useAuth(); // Use the login method from AuthContext
+
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email) {
@@ -53,7 +57,7 @@ const LoginForm: React.FC<{ onShowSignup: () => void }> = ({
     return passwordErrors;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const emailError = validateEmail(email);
@@ -69,12 +73,11 @@ const LoginForm: React.FC<{ onShowSignup: () => void }> = ({
       return;
     }
 
-    // Proceed with login
     setIsLoading(true);
 
     const axiosInstance = axios.create({
-      baseURL: "http://localhost:5000/api", // Your backend base URL
-      withCredentials: true, // Important for cookies
+      baseURL: "http://localhost:5000/api",
+      withCredentials: true,
       headers: {
         "Content-Type": "application/json",
       },
@@ -86,7 +89,9 @@ const LoginForm: React.FC<{ onShowSignup: () => void }> = ({
         password,
       });
 
-      // Successful login
+      // Use the login method from AuthContext
+      login(response.data.token);
+
       toast.success("Login successful! Redirecting...", {
         position: "top-right",
         autoClose: 3000,
@@ -96,19 +101,12 @@ const LoginForm: React.FC<{ onShowSignup: () => void }> = ({
         draggable: true,
       });
 
-      // Optional: Store token in localStorage or sessionStorage
-      localStorage.setItem("token", response.data.token);
-
-      // Redirect or update app state
+      // Redirect 
       setTimeout(() => {
-        // Replace with your actual navigation logic
-        navigate("/");
+        navigate("/"); // or wherever you want to redirect
       }, 3000);
     } catch (error) {
-      // Handle login errors
       if (axios.isAxiosError(error)) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
         const errorMessage =
           error.response?.data?.message || "Login failed. Please try again.";
 
@@ -121,7 +119,6 @@ const LoginForm: React.FC<{ onShowSignup: () => void }> = ({
           draggable: true,
         });
       } else {
-        // Network error or other issues
         toast.error("Network error. Please check your connection.", {
           position: "top-right",
           autoClose: 5000,
